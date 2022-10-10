@@ -1,0 +1,27 @@
+<div>
+    <input type="text" placeholder="Título" [(ngModel)]="nuevaPelicula.titulo">
+    <input type="text" placeholder="Director" [(ngModel)]="nuevaPelicula.director">
+    <input type="text" placeholder="Imagen" [(ngModel)]="nuevaPelicula.imagen">
+    <button (click)="agregarPelicula()">Agregar película</button>
+</div>
+
+<article *ngFor="let pelicula of peliculas">
+    <h3>{{pelicula.titulo}}</h3>
+    <h5>{{pelicula.director}}</h5>
+    <div>
+        <img [src]="pelicula.imagen" width="200px">
+    </div>
+    <div>
+        <button (click)="mostrarDetalle(pelicula)">Ver detalle</button>
+        <button (click)="eliminarPelicula(pelicula)">Eliminar</button>
+    </div>
+</article>
+
+<div id="detalle" *ngIf="detalleVisible">
+    <h3>{{peliculaDetallada.titulo}}</h3>
+    <h5>{{peliculaDetallada.director}}</h5>
+    <div>
+        <img [src]="peliculaDetallada.imagen" width="200px">
+    </div>
+    <button (click)="cerrar()">Cerrar</button>
+</div>
